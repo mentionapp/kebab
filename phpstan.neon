@@ -5,6 +5,5 @@ includes:
 
 parameters:
     excludes_analyse:
-        - vendor/*
         - %rootDir%/../../../vendor/*
 
