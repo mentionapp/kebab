@@ -1,0 +1,26 @@
+dist: xenial
+language: php
+
+php:
+  - '7.1'
+  - '7.2'
+  - '7.3'
+  - nightly
+
+matrix:
+  allow_failures:
+    - php: nightly
+
+install:
+  - composer install
+
+before_script:
+  - if php --ri xdebug >/dev/null; then phpenv config-rm xdebug.ini; fi
+
+script:
+  - vendor/bin/phing
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - tmp
