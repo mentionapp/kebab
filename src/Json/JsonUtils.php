@@ -8,7 +8,7 @@ use Mention\PhpUtils\Json\Exception\JsonUtilsEncodeException;
 class JsonUtils
 {
     /**
-     * Encodes a value to JSON
+     * Encodes a value to JSON.
      *
      * @param mixed $value
      *
@@ -26,7 +26,7 @@ class JsonUtils
     }
 
     /**
-     * Encodes a value to a pretty printed JSON string
+     * Encodes a value to a pretty printed JSON string.
      *
      * @param mixed $value
      *
@@ -38,7 +38,7 @@ class JsonUtils
     }
 
     /**
-     * Returns a pretty-printed JSON string
+     * Returns a pretty-printed JSON string.
      */
     public static function prettify(string $json): string
     {
@@ -46,13 +46,13 @@ class JsonUtils
     }
 
     /**
-     * Decodes a JSON string, prefer objects
+     * Decodes a JSON string, prefer objects.
      *
      * JSON objects are decoded as PHP objects (stdClass instances).
      *
-     * @return mixed
-     *
      * @throws JsonUtilsDecodeException if the value can not be decoded
+     *
+     * @return mixed
      */
     public static function decodeObject(string $json)
     {
@@ -60,13 +60,13 @@ class JsonUtils
     }
 
     /**
-     * Decodes a JSON string as PHP arrays
+     * Decodes a JSON string as PHP arrays.
      *
      * JSON objects are decoded as PHP associative arrays.
      *
-     * @return mixed
-     *
      * @throws JsonUtilsDecodeException if the value can not be decoded
+     *
+     * @return mixed
      */
     public static function decodeArray(string $json)
     {
@@ -78,10 +78,10 @@ class JsonUtils
      *
      * @param mixed $value
      *
-     * @return mixed
-     *
      * @throws JsonUtilsEncodeException if the value can not be encoded
      * @throws JsonUtilsDecodeException if the value can not be decoded
+     *
+     * @return mixed
      */
     public static function roundTrip($value)
     {

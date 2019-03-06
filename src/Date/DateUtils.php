@@ -54,7 +54,7 @@ class DateUtils
     }
 
     /**
-     * Parses a string to a \DateTimeImmutable
+     * Parses a string to a \DateTimeImmutable.
      */
     public static function parse(string $str, ?string $format = null): \DateTimeImmutable
     {
@@ -76,7 +76,7 @@ class DateUtils
     }
 
     /**
-     * Parses a string to a \DateTime
+     * Parses a string to a \DateTime.
      */
     public static function parseMutable(string $str, ?string $format = null): \DateTime
     {
@@ -86,7 +86,7 @@ class DateUtils
     }
 
     /**
-     * Returns a \DateTimeImmutable initialized to the given timestamp
+     * Returns a \DateTimeImmutable initialized to the given timestamp.
      *
      * @param int $timestamp Timestamp in seconds
      * @param int $micros    Microseconds
@@ -112,7 +112,7 @@ class DateUtils
     }
 
     /**
-     * Returns a \DateTimeImmutable initialized to the given timestamp (in milliseconds)
+     * Returns a \DateTimeImmutable initialized to the given timestamp (in milliseconds).
      *
      * @param int $timestampMs Timestamp in milliseconds
      */
@@ -125,7 +125,7 @@ class DateUtils
     }
 
     /**
-     * Converts a \DateTimeInterface to a \DateTime
+     * Converts a \DateTimeInterface to a \DateTime.
      *
      * Returns the given datetime if it's already a \DateTime
      */

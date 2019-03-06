@@ -8,7 +8,7 @@ use Mention\PhpUtils\File\Exception\FileUtilsReadException;
 class FileUtils
 {
     /**
-     * Returns the content of filename
+     * Returns the content of filename.
      *
      * @throw FileUtilsReadException on failure
      */
@@ -27,7 +27,7 @@ class FileUtils
     }
 
     /**
-     * Opens filename
+     * Opens filename.
      *
      * @return resource
      *
