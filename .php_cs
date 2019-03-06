@@ -99,6 +99,7 @@ return PhpCsFixer\Config::create()
         'non_printable_character' => true,
         'normalize_index_brace' => true,
         'object_operator_without_whitespace' => true,
+        'ordered_class_elements' => true,
         'ordered_imports' => true,
         'php_unit_construct' => true,
         'php_unit_dedicate_assert' => true,
