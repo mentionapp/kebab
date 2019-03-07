@@ -2,7 +2,9 @@
 
 php-utils is a collection of type-safe wrappers and testing utilities around a few functions of the PHP standard library. It's so useful that we wanted to use it everywhere, including our personal projects. So, here is that.
 
-## Clock
+## Documentation
+
+### Clock
 
 Clock wraps `time()`, `microtime()`, `sleep()`, `usleep()` in a way that allows these functions to return a fake time during tests (and the real time otherwise).
 
@@ -26,7 +28,7 @@ Before calling `enableMocking()`, `Clock` methods return the true system time, a
 
 This is heavily inspired by Symfony's `ClockMock` class.
 
-## Date\DateUtils
+### Date\DateUtils
 
 This class provides a few date creation methods that use `Clock` internally, so that they can be mocked.
 
@@ -46,7 +48,7 @@ DateUtils::fromTimestamp($timestamp); // Same as \DateTimeImmutable::createFromF
 DateUtils::fromTimestamp($timestamp, $micro); // Same as \DateTimeImmutable::createFromFormat("U u", "$timestamp $micro");
 ```
 
-## File\FileUtils
+### File\FileUtils
 
 This class provides a few file functions that throw an exception in case of failure.
 
@@ -58,7 +60,7 @@ FileUtils::read($file); // Reads file $file, throws exception on failure
 FileUtils::open($file, $mode); // Opens file $file, throws exception on failure
 ```
 
-## Json\JsonUtils
+### Json\JsonUtils
 
 This class provides a few JSON functions that throw an exception in case of failure, with a slightly improved interface.
 
@@ -76,3 +78,6 @@ JsonUtils::decodeObject($json); // decodes a JSON string, use stdClass to repres
 JsonUtils::decodeArray($json); // decodes a JSON string, use arrays to represent JSON objects (same as json_decode($value, true))
 ```
 
+## Authors
+
+The [Mention](https://mention.com) team and contributors
