@@ -22,7 +22,7 @@ The goals of this package are to:
  - Make static analyzers happy
  - Make testing easier
 
-Some functions in the PHP standard library have notiriously bad API. Take for example `json_decode()`: If returns `null` if there was an error, or if the JSON string was the `NULL` literal. The package provides sane wrappers that automatically check for errors and throw exceptions on failure. The package also provides a wrapper for less broken functions like `file_get_contents()`, because throwing exceptions on errors is useful.
+Some functions in the PHP standard library have a notoriously bad API. Take for example `json_decode()`: If returns `null` if there was an error, or if the JSON string was the `NULL` literal. The package provides sane wrappers that automatically check for errors and throw exceptions on failure. The package also provides a wrapper for less broken functions like `file_get_contents()`, because throwing exceptions on errors is useful.
 
 The wrappers do not only check for errors, they also try to improve the API. For instance, `json_decode()` is declined in two variants: `JsonUtils::decodeArray()` and `JsonUtils::decodeObject()`.
 
