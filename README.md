@@ -6,7 +6,7 @@ php-utils is a collection of type-safe wrappers and testing utilities around a f
 
 ### Clock
 
-Clock wraps `time()`, `microtime()`, `sleep()`, `usleep()` in a way that allows these functions to return a fake time during tests (and the real time otherwise).
+Clock wraps `time()`, `microtime()`, `sleep()`, `usleep()` in a way that allows these functions to return a fake time during tests (and the system time otherwise).
 
 Example:
 
