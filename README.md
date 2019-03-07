@@ -2,6 +2,17 @@
 
 Kebab is a collection of safety wrappers and testing utilities around a few functions of the PHP standard library. It's so useful that we wanted to use it everywhere, including our personal projects. So we couldn't keep it for ourselves.
 
+[![Build Status](https://travis-ci.org/mentionapp/kebab.svg?branch=master)](https://travis-ci.org/mentionapp/kebab)
+[![Latest Version](https://poser.pugx.org/mention/kebab/v/stable)](https://packagist.org/packages/mention/kebab)
+[![MIT License](https://poser.pugx.org/mention/kebab/license)](https://choosealicense.com/licenses/mit/)
+[![PHPStan Enabled](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
+
+## Install
+
+```
+composer install mention/kebab
+```
+
 ## Documentation
 
 ### Clock
