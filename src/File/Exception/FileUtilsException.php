@@ -1,6 +1,6 @@
 <?php
 
-namespace Mention\PhpUtils\File\Exception;
+namespace Mention\Kebab\File\Exception;
 
 class FileUtilsException extends \Exception
 {

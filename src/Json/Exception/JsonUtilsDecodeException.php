@@ -1,8 +1,8 @@
 <?php
 
-namespace Mention\PhpUtils\Json\Exception;
+namespace Mention\Kebab\Json\Exception;
 
-use Mention\PhpUtils\Log\LogUtils;
+use Mention\Kebab\Log\LogUtils;
 
 class JsonUtilsDecodeException extends JsonUtilsException
 {

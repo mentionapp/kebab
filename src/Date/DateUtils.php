@@ -1,9 +1,9 @@
 <?php
 
-namespace Mention\PhpUtils\Date;
+namespace Mention\Kebab\Date;
 
 use Assert\Assertion;
-use Mention\PhpUtils\Clock\Clock;
+use Mention\Kebab\Clock\Clock;
 
 /**
  * DateUtils implements common datetime operations.

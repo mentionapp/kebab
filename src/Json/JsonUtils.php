@@ -1,9 +1,9 @@
 <?php
 
-namespace Mention\PhpUtils\Json;
+namespace Mention\Kebab\Json;
 
-use Mention\PhpUtils\Json\Exception\JsonUtilsDecodeException;
-use Mention\PhpUtils\Json\Exception\JsonUtilsEncodeException;
+use Mention\Kebab\Json\Exception\JsonUtilsDecodeException;
+use Mention\Kebab\Json\Exception\JsonUtilsEncodeException;
 
 class JsonUtils
 {

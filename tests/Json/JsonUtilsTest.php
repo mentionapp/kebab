@@ -1,8 +1,8 @@
 <?php
 
-namespace Mention\PhpUtils\Tests\Json;
+namespace Mention\Kebab\Tests\Json;
 
-use Mention\PhpUtils\Json\JsonUtils;
+use Mention\Kebab\Json\JsonUtils;
 use PHPUnit\Framework\TestCase;
 
 class JsonUtilsTest extends TestCase
@@ -16,7 +16,7 @@ class JsonUtilsTest extends TestCase
     }
 
     /**
-     * @expectedException \Mention\PhpUtils\Json\Exception\JsonUtilsEncodeException
+     * @expectedException \Mention\Kebab\Json\Exception\JsonUtilsEncodeException
      * @expectedExceptionMessage Failed encoding JSON
      */
     public function testEncodeFailure(): void
@@ -34,7 +34,7 @@ class JsonUtilsTest extends TestCase
     }
 
     /**
-     * @expectedException \Mention\PhpUtils\Json\Exception\JsonUtilsDecodeException
+     * @expectedException \Mention\Kebab\Json\Exception\JsonUtilsDecodeException
      * @expectedExceptionMessage Failed decoding JSON
      */
     public function testDecodeObjectFailure(): void
@@ -52,7 +52,7 @@ class JsonUtilsTest extends TestCase
     }
 
     /**
-     * @expectedException \Mention\PhpUtils\Json\Exception\JsonUtilsDecodeException
+     * @expectedException \Mention\Kebab\Json\Exception\JsonUtilsDecodeException
      * @expectedExceptionMessage Failed decoding JSON
      */
     public function testDecodeArrayFailure(): void

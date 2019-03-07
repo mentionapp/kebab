@@ -1,6 +1,6 @@
 {
-    "name": "mention/php-utils",
-    "description": "Wrappers around the PHP native library focused on type safety and testability",
+    "name": "mention/kebab",
+    "description": "Wrappers around the PHP standard library focused on safety and testability",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mention\\PhpUtils\\": "src"
+            "Mention\\Kebab\\": "src"
         }
     },
     "autoload-dev": {

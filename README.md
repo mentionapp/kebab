@@ -1,6 +1,6 @@
-# php-utils
+# Kebab 🌮
 
-php-utils is a collection of type-safe wrappers and testing utilities around a few functions of the PHP standard library. It's so useful that we wanted to use it everywhere, including our personal projects. So, here is that.
+Kebab is a collection of safety wrappers and testing utilities around a few functions of the PHP standard library. It's so useful that we wanted to use it everywhere, including our personal projects. So we couldn't keep it for ourselves.
 
 ## Documentation
 

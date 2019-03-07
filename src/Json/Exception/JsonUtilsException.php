@@ -1,6 +1,6 @@
 <?php
 
-namespace Mention\PhpUtils\Json\Exception;
+namespace Mention\Kebab\Json\Exception;
 
 class JsonUtilsException extends \Exception
 {

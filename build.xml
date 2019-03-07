@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="php-utils" default="check">
+<project name="kebab" default="check">
     <target name="check" depends="
         composer-validate,
         composer-install,

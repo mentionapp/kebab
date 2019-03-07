@@ -1,6 +1,6 @@
 <?php
 
-namespace Mention\PhpUtils\Log;
+namespace Mention\Kebab\Log;
 
 class LogUtils
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Mention\PhpUtils\File;
+namespace Mention\Kebab\File;
 
-use Mention\PhpUtils\File\Exception\FileUtilsOpenException;
-use Mention\PhpUtils\File\Exception\FileUtilsReadException;
+use Mention\Kebab\File\Exception\FileUtilsOpenException;
+use Mention\Kebab\File\Exception\FileUtilsReadException;
 
 class FileUtils
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mention\PhpUtils\Clock;
+namespace Mention\Kebab\Clock;
 
 /**
  * Clock is a collection of mockable time-related functions.
