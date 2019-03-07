@@ -30,7 +30,7 @@ All wrappers have static, single return types, to make static analyzers happy. F
 
 Finally, the package provides some tools to make testing easier, such as the `Clock` class that allows to fake the system time during tests.
 
-## Documentation
+## Overview
 
 ### Clock
 
