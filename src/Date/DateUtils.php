@@ -56,7 +56,7 @@ class DateUtils
     /**
      * Parses a string to a \DateTimeImmutable.
      */
-    public static function parse(string $str, ?string $format = null): \DateTimeImmutable
+    public static function fromString(string $str, ?string $format = null): \DateTimeImmutable
     {
         if (null !== $format) {
             $datetime = \DateTimeImmutable::createFromFormat($format, $str);
@@ -78,9 +78,9 @@ class DateUtils
     /**
      * Parses a string to a \DateTime.
      */
-    public static function parseMutable(string $str, ?string $format = null): \DateTime
+    public static function fromStringMutable(string $str, ?string $format = null): \DateTime
     {
-        $dateTimeImmutable = self::parse($str, $format);
+        $dateTimeImmutable = self::fromString($str, $format);
 
         return self::toMutable($dateTimeImmutable);
     }
