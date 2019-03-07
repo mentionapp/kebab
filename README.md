@@ -15,11 +15,20 @@ composer require mention/kebab:*@dev
 
 ## Goals
 
-Some functions in the PHP standard library are notiriously bad. Take for example `json_decode()`: If returns null if there was an error, or if the JSON string was the JSON `NULL` literal.
+The goals of this package are to:
 
-The goal of this package is to provide a sane wrapper to these functions, mostly by checking the return type and throwing exceptions on failure.
+ - Provide wrappers that are safe by default (by throwing exceptions on error)
+ - Provide wrappers with better APIs
+ - Make static analyzers happy
+ - Make testing easier
 
-The package also provides a wrapper for less broken functions like `file_get_contents()`, because throwing exceptions on errors is useful.
+Some functions in the PHP standard library have notiriously bad API. Take for example `json_decode()`: If returns `null` if there was an error, or if the JSON string was the `NULL` literal. The package provides sane wrappers that automatically check for errors and throw exceptions on failure. The package also provides a wrapper for less broken functions like `file_get_contents()`, because throwing exceptions on errors is useful.
+
+The wrappers do not only check for errors, they also try to improve the API. For instance, `json_decode()` is declined in two variants: `JsonUtils::decodeArray()` and `JsonUtils::decodeObject()`.
+
+All wrappers have static, single return types, to make static analyzers happy. For example, there is `Clock::microtimeFloat()` and `Clock::microtimeString()` instead of a single function returning one of two possible types.
+
+Finally, the package provides some tools to make testing easier, such as the `Clock` class that allows to fake the system time during tests.
 
 ## Documentation
 
@@ -49,7 +58,7 @@ This is heavily inspired by Symfony's `ClockMock` class.
 
 ### Date\DateUtils
 
-This class provides a few date creation methods that use `Clock` internally, so that they can be mocked.
+`DateUtils` provides a few date creation methods. The class usese `Clock` internally, so it will successfully use the fake time during tests.
 
 ``` php
 <?php
