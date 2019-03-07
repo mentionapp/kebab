@@ -10,7 +10,7 @@ Kebab is a collection of safety wrappers and testing utilities around a few func
 ## Install
 
 ```
-composer install mention/kebab
+composer require mention/kebab
 ```
 
 ## Documentation
