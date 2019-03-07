@@ -13,6 +13,14 @@ Kebab is a collection of safety wrappers and testing utilities around a few func
 composer require mention/kebab:*@dev
 ```
 
+## Goals
+
+Some functions in the PHP standard library are notiriously bad. Take for example `json_decode()`: If returns null if there was an error, or if the JSON string was the JSON `NULL` literal.
+
+The goal of this package is to provide a sane wrapper to these functions, mostly by checking the return type and throwing exceptions on failure.
+
+The package also provides a wrapper for less broken functions like `file_get_contents()`, because throwing exceptions on errors is useful.
+
 ## Documentation
 
 ### Clock
