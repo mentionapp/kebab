@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class DateUtilsTest extends TestCase
 {
-    public function testFromString()
+    public function testFromString(): void
     {
         Clock::enableMocking(0.0); // Let's travel through time!
         self::assertEquals('1970-01-01', DateUtils::now()->format('Y-m-d'));
@@ -23,7 +23,7 @@ class DateUtilsTest extends TestCase
         self::assertEquals('1970-01-04', $day4->format('Y-m-d'));
     }
 
-    public function testFromStringMutable()
+    public function testFromStringMutable(): void
     {
         Clock::enableMocking(0.0); // Let's travel through time!
         self::assertEquals('1970-01-01', DateUtils::now()->format('Y-m-d'));
