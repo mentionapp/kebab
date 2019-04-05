@@ -72,7 +72,7 @@ class DateUtils
             return $datetime;
         }
 
-        return new \DateTimeImmutable($str);
+        return self::newDateTimeImmutable($str);
     }
 
     /**
@@ -153,5 +153,10 @@ class DateUtils
             $ts,
             substr($microPart, 2, self::MAX_MICRO_DIGITS)
         );
+    }
+
+    private static function newDateTimeImmutable(string $str): \DateTimeImmutable
+    {
+        return self::now()->modify($str);
     }
 }
