@@ -85,6 +85,8 @@ This class provides a few file functions that throw an exception in case of fail
 
 FileUtils::read($file); // Reads file $file, throws exception on failure
 
+FileUtils::write($file, $content); // Write content $content into file $file, throws exception on failure
+
 FileUtils::open($file, $mode); // Opens file $file, throws exception on failure
 ```
 
