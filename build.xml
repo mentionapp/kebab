@@ -63,6 +63,17 @@
         </exec>
     </target>
 
+    <target name="php-cs-fixer-fix">
+        <exec
+                executable="vendor/bin/php-cs-fixer"
+                logoutput="true"
+                passthru="true"
+                checkreturn="true"
+        >
+            <arg value="fix"/>
+        </exec>
+    </target>
+
     <target name="phpstan">
         <exec
                 executable="vendor/bin/phpstan"
