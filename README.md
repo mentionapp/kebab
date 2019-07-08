@@ -67,9 +67,19 @@ DateUtils::now(); // Same as new \DateTimeImmutable();
 
 DateUtils::nowMutable(); // Same as new \DateTime();
 
-DateUtils::fromString($dateString); // Same as new \DateTimteImmutable($dateString);
+DateUtils::nowTz($timezone); // Same as new \DateTimeImmutable('now', $timezone);
+
+DateUtils::fromString($dateString); // Same as new \DateTimeImmutable($dateString);
 
 DateUtils::fromString($dateString, $format); // Same as \DateTimeImmutable::createFromFormat($format, $dateString);
+
+DateUtils::fromStringMutable($dateString); // Same as new \DateTime($dateString);
+
+DateUtils::fromStringMutable($dateString, $format); // Same as \DateTime::createFromFormat($format, $dateString);
+
+DateUtils::fromStringTz($dateString, $timezone); // Same as new \DateTimeImmutable($dateString, $timezone);
+
+DateUtils::fromStringTz($dateString, $timezone, $format); // Same as \DateTimeImmutable::createFromFormat($format, $dateString, $timezone);
 
 DateUtils::fromTimestamp($timestamp); // Same as \DateTimeImmutable::createFromFormat("|U", (string) $timestamp);
 

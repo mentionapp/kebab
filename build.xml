@@ -83,6 +83,7 @@
                 passthru="true"
                 checkreturn="true"
         >
+            <arg value="-ddate.timezone=Europe/Paris"/>
             <arg path="tests"/>
         </exec>
     </target>
