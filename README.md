@@ -58,7 +58,7 @@ This is heavily inspired by Symfony's `ClockMock` class.
 
 ### Date\DateUtils
 
-`DateUtils` provides a few date creation methods. The class usese `Clock` internally, so it will successfully use the fake time during tests.
+`DateUtils` provides a few date creation methods. The class uses `Clock` to get the system time, so its results can be controlled and predicted in tests.
 
 ``` php
 <?php
