@@ -41,16 +41,15 @@ class DateUtils
      */
     public static function nowMutable(): \DateTime
     {
-        $datetime = \DateTime::createFromFormat(
-            'U u',
-            self::nowString()
-        );
+        return self::toMutable(self::now());
+    }
 
-        if (false === $datetime) {
-            throw new \RuntimeException('Failed creating datetime');
-        }
-
-        return $datetime;
+    /**
+     * Returns a \DateTimeImmutable initialized to the current time.
+     */
+    public static function nowTz(\DateTimeZone $tz): \DateTimeImmutable
+    {
+        return self::now()->setTimezone($tz);
     }
 
     /**
@@ -58,21 +57,37 @@ class DateUtils
      */
     public static function fromString(string $str, ?string $format = null): \DateTimeImmutable
     {
+        return self::fromStringTz(
+            $str,
+            new \DateTimeZone(date_default_timezone_get()),
+            $format
+        );
+    }
+
+    /**
+     * Parses a string to a \DateTimeImmutable for a given timezone.
+     */
+    public static function fromStringTz(
+        string $str,
+        \DateTimeZone $tz,
+        ?string $format = null
+    ): \DateTimeImmutable {
         if (null !== $format) {
-            $datetime = \DateTimeImmutable::createFromFormat($format, $str);
+            $datetime = \DateTimeImmutable::createFromFormat($format, $str, $tz);
 
             if (false === $datetime) {
                 throw new \InvalidArgumentException(sprintf(
-                    'Can not parse date with format `%s`: `%s`',
+                    'Can not parse date with format `%s` and timezone `%s`: `%s`',
                     $format,
+                    $tz->getName(),
                     $str
                 ));
             }
 
-            return $datetime;
+            return $datetime->setTimezone($tz);
         }
 
-        return self::newDateTimeImmutable($str);
+        return self::newDateTimeImmutable($str, $tz);
     }
 
     /**
@@ -141,7 +156,7 @@ class DateUtils
             throw new \RuntimeException('Convertion to mutable failed');
         }
 
-        return $mutable;
+        return $mutable->setTimezone($datetime->getTimezone());
     }
 
     private static function nowString(): string
@@ -155,8 +170,12 @@ class DateUtils
         );
     }
 
-    private static function newDateTimeImmutable(string $str): \DateTimeImmutable
-    {
-        return self::now()->modify($str);
+    private static function newDateTimeImmutable(
+        string $str,
+        ?\DateTimeZone $tz = null
+    ): \DateTimeImmutable {
+        return null === $tz
+            ? self::now()->modify($str)
+            : self::nowTz($tz)->modify($str);
     }
 }
