@@ -118,18 +118,18 @@ JsonUtils::decodeArray($json); // decodes a JSON string, use arrays to represent
 
 ### Log\LogUtils
 
-This class provides a useful truncate method that truncates long strings for logging purposes.  
-Truncating can be disabled by setting the `NO_TRUNCATE_LOG` environment variable to `1`.
+The method `LogUtils::truncate()` can be used to prevent logging excessively long values. By default, it truncates the given string to 255 bytes. Truncating can be disabled by setting the `NO_TRUNCATE_LOG` environment variable to `1`.
 
 ``` php
 <?php
 
-LogUtils::truncate($veryLargeString); // Truncate to 255 characters by default. 
+LogUtils::truncate($veryLargeString); // Truncates to 255 characters by default. 
 ```
 
 ### Pcre\PcreUtils
 
-This class provides PCRE/preg wrapper with a better API:
+This class provides PCRE/preg wrappers with a better API:
+
 - Throws exceptions in case of error (invalid argument, invalid regex, ...)
 - Return static, single types
 
