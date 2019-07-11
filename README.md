@@ -116,6 +116,91 @@ JsonUtils::decodeObject($json); // decodes a JSON string, use stdClass to repres
 JsonUtils::decodeArray($json); // decodes a JSON string, use arrays to represent JSON objects (same as json_decode($value, true))
 ```
 
+### Log\LogUtils
+
+This class provides a useful truncate method that truncates long strings for logging purposes.  
+Truncating can be disabled by setting the `NO_TRUNCATE_LOG` environment variable to `1`.
+
+``` php
+<?php
+
+LogUtils::truncate($veryLargeString); // Truncate to 255 characters by default. 
+```
+
+### Pcre\PcreUtils
+
+This class provides PCRE/preg wrapper with a better API:
+- Throws exceptions in case of error (invalid argument, invalid regex, ...)
+- Return static, single types
+
+#### String replacement
+```php
+<?php
+
+// Only accept string as subject and returns a string
+PcreUtils::replace('/bar/', 'foo', 'foobarbaz'); 
+
+// Only accept array as subject and returns an array
+PcreUtils::replaceMultiple('/foo/', 'bar', ['foo', 'foo']); 
+
+// Only accept string as subject and returns a string
+PcreUtils::replaceArray(['/foo/' => 'bar'], 'foo'); 
+
+// Only accept array as subject and returns an array
+PcreUtils::replaceArrayMultiple(['/foo/' => 'bar'], ['foo', 'foo']); 
+```
+
+#### Callback replacement
+```php
+<?php
+
+// Only accept string as subject and returns a string
+PcreUtils::replaceCallback('/\d/', $callback, '123'); 
+
+// Only accept array as subject and returns an array
+PcreUtils::replaceCallbackMultiple('/\d/', $callback, ['1', '2']); 
+
+// Only accept string as subject and returns a string
+PcreUtils::replaceCallbackArray($patternsAndCallbacks, '123');
+
+// Only accept array as subject and returns an array
+PcreUtils::replaceCallbackArrayMultiple($patternsAndCallbacks, ['1', '2']);
+```
+
+#### Filter replacement
+```php
+<?php
+
+// Only accept string as subject and returns a string
+PcreUtils::filter('/bar/', 'foo', 'foobarbaz');
+
+// Only accept array as subject and returns an array
+PcreUtils::filterMultiple('/foo/', 'bar', ['foo', 'foo']);
+
+// Only accept string as subject and returns a string
+PcreUtils::filterArray(['/foo/' => 'bar'], 'foo');
+
+// Only accept array as subject and returns an array
+PcreUtils::filterArrayMultiple(['/foo/' => 'bar'], ['foo', 'foo']);
+```
+
+#### Other methods
+```php
+<?php
+
+// Always returns a boolean or throws on error
+PcreUtils::match('/bar/', 'foobarbaz');
+
+// Returns number of hits that matched or throws on error
+PcreUtils::matchAll('/foo/', 'foobarbaz');
+
+// Split string by a regular expression
+PcreUtils::split('/\d/', 'foo1bar2baz');
+
+// Quote regular expression characters
+PcreUtils::quote('foo$bar');
+```
+
 ## Authors
 
 The [Mention](https://mention.com) team and contributors
