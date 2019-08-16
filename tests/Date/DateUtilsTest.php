@@ -31,6 +31,10 @@ class DateUtilsTest extends TestCase
         self::assertEquals('86400', $day5->getTimestamp());
         self::assertEquals('Europe/Paris', $day5->getTimezone()->getName());
         self::assertEquals('1970-01-02 00:00:00', $day6->format('Y-m-d H:i:s'));
+
+        $day7 = DateUtils::fromString('04-01-1970 00:00:00+12:00');
+        self::assertEquals('1970-01-04', $day7->format('Y-m-d'));
+        self::assertEquals('+12:00', $day7->getTimezone()->getName());
     }
 
     public function testFromStringMutable(): void
