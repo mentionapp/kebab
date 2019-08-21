@@ -13,28 +13,28 @@ class DateUtilsTest extends TestCase
         Clock::enableMocking(0.0); // Let's travel through time!
         self::assertEquals('1970-01-01', DateUtils::now()->format('Y-m-d'));
 
-        $day2 = DateUtils::fromString('+1 day');
-        self::assertEquals('1970-01-02', $day2->format('Y-m-d'));
+        $day = DateUtils::fromString('+1 day');
+        self::assertEquals('1970-01-02', $day->format('Y-m-d'));
 
-        $day3 = DateUtils::fromString('1970-01-03');
-        self::assertEquals('1970-01-03', $day3->format('Y-m-d'));
+        $day = DateUtils::fromString('1970-01-03');
+        self::assertEquals('1970-01-03', $day->format('Y-m-d'));
 
-        $day4 = DateUtils::fromString('04-01-1970', 'd-m-Y');
-        self::assertEquals('1970-01-04', $day4->format('Y-m-d'));
+        $day = DateUtils::fromString('04-01-1970', 'd-m-Y');
+        self::assertEquals('1970-01-04', $day->format('Y-m-d'));
 
-        $day5 = DateUtils::fromString('86400', 'U');
-        self::assertEquals('86400', $day5->getTimestamp());
-        self::assertEquals('Europe/Paris', $day5->getTimezone()->getName());
-        self::assertEquals('1970-01-02 01:00:00', $day5->format('Y-m-d H:i:s'));
+        $day = DateUtils::fromString('86400', 'U');
+        self::assertEquals('86400', $day->getTimestamp());
+        self::assertEquals('Europe/Paris', $day->getTimezone()->getName());
+        self::assertEquals('1970-01-02 01:00:00', $day->format('Y-m-d H:i:s'));
 
-        $day6 = DateUtils::fromString('@86400');
-        self::assertEquals('86400', $day5->getTimestamp());
-        self::assertEquals('Europe/Paris', $day5->getTimezone()->getName());
-        self::assertEquals('1970-01-02 00:00:00', $day6->format('Y-m-d H:i:s'));
+        $day = DateUtils::fromString('@86400');
+        self::assertEquals('86400', $day->getTimestamp());
+        self::assertEquals('+00:00', $day->getTimezone()->getName());
+        self::assertEquals('1970-01-02 00:00:00', $day->format('Y-m-d H:i:s'));
 
-        $day7 = DateUtils::fromString('04-01-1970 00:00:00+12:00');
-        self::assertEquals('1970-01-04', $day7->format('Y-m-d'));
-        self::assertEquals('+12:00', $day7->getTimezone()->getName());
+        $day = DateUtils::fromString('04-01-1970 00:00:00+12:00');
+        self::assertEquals('1970-01-04', $day->format('Y-m-d'));
+        self::assertEquals('+12:00', $day->getTimezone()->getName());
     }
 
     public function testFromStringMutable(): void
@@ -42,14 +42,14 @@ class DateUtilsTest extends TestCase
         Clock::enableMocking(0.0); // Let's travel through time!
         self::assertEquals('1970-01-01', DateUtils::now()->format('Y-m-d'));
 
-        $day2 = DateUtils::fromStringMutable('+1 day');
-        self::assertEquals('1970-01-02', $day2->format('Y-m-d'));
+        $day = DateUtils::fromStringMutable('+1 day');
+        self::assertEquals('1970-01-02', $day->format('Y-m-d'));
 
-        $day3 = DateUtils::fromStringMutable('1970-01-03');
-        self::assertEquals('1970-01-03', $day3->format('Y-m-d'));
+        $day = DateUtils::fromStringMutable('1970-01-03');
+        self::assertEquals('1970-01-03', $day->format('Y-m-d'));
 
-        $day4 = DateUtils::fromStringMutable('04-01-1970', 'd-m-Y');
-        self::assertEquals('1970-01-04', $day4->format('Y-m-d'));
+        $day = DateUtils::fromStringMutable('04-01-1970', 'd-m-Y');
+        self::assertEquals('1970-01-04', $day->format('Y-m-d'));
     }
 
     public function testFromStringTz(): void
