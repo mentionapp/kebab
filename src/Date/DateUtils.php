@@ -57,11 +57,12 @@ class DateUtils
      */
     public static function fromString(string $str, ?string $format = null): \DateTimeImmutable
     {
-        return self::fromStringTz(
-            $str,
-            new \DateTimeZone(date_default_timezone_get()),
-            $format
-        );
+        $naiveDate = date_create($str);
+        $timeZone = false !== $naiveDate
+            ? $naiveDate->getTimezone()
+            : new \DateTimeZone(date_default_timezone_get());
+
+        return self::fromStringTz($str, $timeZone, $format);
     }
 
     /**
