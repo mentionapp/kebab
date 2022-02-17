@@ -9,7 +9,7 @@ $finder = PhpCsFixer\Finder::create()
     ->append([__FILE__])
     ;
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRules([
         'array_syntax' => ['syntax' => 'short'], // Differs from Symfony, where array syntax is long
         'binary_operator_spaces' => true,
@@ -20,6 +20,7 @@ return PhpCsFixer\Config::create()
         'cast_spaces' => true,
         'class_attributes_separation' => true,
         'class_definition' => true,
+        'constant_case' => true,
         'combine_consecutive_issets' => true,
         'combine_consecutive_unsets' => true,
         'compact_nullable_typehint' => true,
@@ -40,6 +41,7 @@ return PhpCsFixer\Config::create()
         'function_declaration' => true,
         'function_to_constant' => true,
         'function_typehint_space' => true,
+        'general_phpdoc_tag_rename' => true,
         'include' => true,
         'increment_style' => ['style' => 'post'], // Differs from symfony
         'indentation_type' => true,
@@ -48,8 +50,6 @@ return PhpCsFixer\Config::create()
         'linebreak_after_opening_tag' => true,
         'list_syntax' => ['syntax' => 'short'],
         'logical_operators' => true,
-        'lowercase_cast' => true,
-        'lowercase_constants' => true,
         'lowercase_keywords' => true,
         'lowercase_static_reference' => true,
         'magic_constant_casing' => true,
@@ -107,35 +107,35 @@ return PhpCsFixer\Config::create()
         'php_unit_fqcn_annotation' => true,
         'php_unit_mock' => true,
         'php_unit_namespaced' => false, // incompleted / bogus
-        'php_unit_no_expectation_annotation' => false,
-        'php_unit_ordered_covers' => true,
+        'php_unit_no_expectation_annotation' => true,
         'php_unit_set_up_tear_down_visibility' => true,
         'php_unit_test_annotation' => [
-            'case' => 'camel',
             'style' => 'prefix',
         ],
         'phpdoc_align' => true,
         'phpdoc_annotation_without_dot' => true,
         'phpdoc_indent' => true,
-        'phpdoc_inline_tag' => true,
+        'phpdoc_inline_tag_normalizer' => true,
         'phpdoc_no_access' => true,
         'phpdoc_no_alias_tag' => true,
         'phpdoc_no_empty_return' => true,
         'phpdoc_no_package' => true,
         'phpdoc_no_useless_inheritdoc' => true,
         'phpdoc_order' => true,
+        'phpdoc_order_by_value' => true,
         'phpdoc_return_self_reference' => true,
         'phpdoc_scalar' => true,
         'phpdoc_separation' => true,
         'phpdoc_single_line_var_spacing' => true,
         'phpdoc_summary' => true,
+        'phpdoc_tag_type' => true,
         'phpdoc_to_comment' => true,
         'phpdoc_trim' => true,
         'phpdoc_trim_consecutive_blank_line_separation' => true,
         'phpdoc_types' => true,
         'phpdoc_types_order' => false, // puts null before the type
         'phpdoc_var_without_name' => false,
-        'psr4' => true,
+        'psr_autoloading' => true,
         'return_assignment' => false,
         'return_type_declaration' => true,
         'self_accessor' => true,
@@ -155,7 +155,7 @@ return PhpCsFixer\Config::create()
         'switch_case_space' => true,
         'ternary_operator_spaces' => true,
         'ternary_to_null_coalescing' => true,
-        'trailing_comma_in_multiline_array' => true,
+        'trailing_comma_in_multiline' => true,
         'trim_array_spaces' => true,
         'unary_operator_spaces' => true,
         'visibility_required' => [

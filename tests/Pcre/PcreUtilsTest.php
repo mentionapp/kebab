@@ -2,6 +2,7 @@
 
 namespace Mention\Kebab\Tests\Pcre;
 
+use Mention\Kebab\Pcre\Exception\PcreException;
 use Mention\Kebab\Pcre\PcreUtils;
 use PHPUnit\Framework\TestCase;
 
@@ -18,11 +19,11 @@ class PcreUtilsTest extends TestCase
 
     /**
      * @covers \Mention\Kebab\Pcre\PcreUtils::::match
-     *
-     * @expectedException \Mention\Kebab\Pcre\Exception\PcreException
      */
     public function testMatchThrows(): void
     {
+        $this->expectException(PcreException::class);
+
         PcreUtils::match('/foo/', 'foobarbaz', $matches, 0, 12);
     }
 
@@ -38,11 +39,11 @@ class PcreUtilsTest extends TestCase
 
     /**
      * @covers \Mention\Kebab\Pcre\PcreUtils::::matchAll
-     *
-     * @expectedException \Mention\Kebab\Pcre\Exception\PcreException
      */
     public function testMatchAllThrows(): void
     {
+        $this->expectException(PcreException::class);
+
         PcreUtils::matchAll('/foo/', 'foobarbaz', $matches, 0, 12);
     }
 
@@ -197,11 +198,11 @@ class PcreUtilsTest extends TestCase
 
     /**
      * @covers \Mention\Kebab\Pcre\PcreUtils::::filter
-     *
-     * @expectedException \Mention\Kebab\Pcre\Exception\PcreException
      */
     public function testFilterThrows(): void
     {
+        $this->expectException(PcreException::class);
+
         PcreUtils::filter('/notmatching/', 'foo', 'foobarbaz');
     }
 
