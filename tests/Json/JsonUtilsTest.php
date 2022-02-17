@@ -2,6 +2,8 @@
 
 namespace Mention\Kebab\Tests\Json;
 
+use Mention\Kebab\Json\Exception\JsonUtilsDecodeException;
+use Mention\Kebab\Json\Exception\JsonUtilsEncodeException;
 use Mention\Kebab\Json\JsonUtils;
 use PHPUnit\Framework\TestCase;
 
@@ -15,12 +17,11 @@ class JsonUtilsTest extends TestCase
         self::assertEquals('["hello"]', $json);
     }
 
-    /**
-     * @expectedException \Mention\Kebab\Json\Exception\JsonUtilsEncodeException
-     * @expectedExceptionMessage Failed encoding JSON
-     */
     public function testEncodeFailure(): void
     {
+        $this->expectException(JsonUtilsEncodeException::class);
+        $this->expectExceptionMessage('Failed encoding JSON');
+
         $data = "\xe9";
         JsonUtils::encode($data);
     }
@@ -33,12 +34,11 @@ class JsonUtilsTest extends TestCase
         self::assertEquals((object) ['hello' => 'world'], $data);
     }
 
-    /**
-     * @expectedException \Mention\Kebab\Json\Exception\JsonUtilsDecodeException
-     * @expectedExceptionMessage Failed decoding JSON
-     */
     public function testDecodeObjectFailure(): void
     {
+        $this->expectException(JsonUtilsDecodeException::class);
+        $this->expectExceptionMessage('Failed decoding JSON');
+
         $json = '"hello';
         JsonUtils::decodeObject($json);
     }
@@ -51,12 +51,11 @@ class JsonUtilsTest extends TestCase
         self::assertEquals(['hello' => 'world'], $data);
     }
 
-    /**
-     * @expectedException \Mention\Kebab\Json\Exception\JsonUtilsDecodeException
-     * @expectedExceptionMessage Failed decoding JSON
-     */
     public function testDecodeArrayFailure(): void
     {
+        $this->expectException(JsonUtilsDecodeException::class);
+        $this->expectExceptionMessage('Failed decoding JSON');
+
         $json = '"hello';
         JsonUtils::decodeArray($json);
     }
