@@ -1,9 +1,12 @@
 includes:
-    - vendor/phpstan/phpstan/conf/config.level7.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
     - vendor/phpstan/phpstan-beberlei-assert/extension.neon
 
 parameters:
-    excludes_analyse:
+    level: 9
+    paths:
+        - src
+        - tests
+    excludePaths:
         - %rootDir%/../../../vendor/*
 

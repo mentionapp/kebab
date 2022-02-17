@@ -13,6 +13,8 @@ class PcreUtils
      * Perform a regular expression match.
      *
      * @see https://www.php.net/manual/en/function.preg-match.php
+     *
+     * @param array<string> $matches
      */
     public static function match(
         string $pattern,
@@ -34,6 +36,8 @@ class PcreUtils
      * Perform a global regular expression match.
      *
      * @see https://www.php.net/manual/en/function.preg-match-all.php
+     *
+     * @param array<array<string>> $matches
      */
     public static function matchAll(
         string $pattern,
@@ -47,6 +51,8 @@ class PcreUtils
         if (false === $hits) {
             throw PcreException::fromLastError();
         }
+
+        assert(is_int($hits));
 
         return $hits;
     }
@@ -120,6 +126,8 @@ class PcreUtils
      *
      * @param string|array<string> $pattern
      * @param array<string>        $subjects
+     *
+     * @return array<string>
      */
     public static function replaceMultiple(
         $pattern,
@@ -147,6 +155,8 @@ class PcreUtils
      *
      * @param array<string,string> $patternsAndReplacements
      * @param array<string>        $subjects
+     *
+     * @return array<string>
      */
     public static function replaceArrayMultiple(
         array $patternsAndReplacements,
@@ -205,6 +215,8 @@ class PcreUtils
      *
      * @param string|array<string> $pattern
      * @param array<string>        $subjects
+     *
+     * @return array<string>
      */
     public static function replaceCallbackMultiple(
         $pattern,
@@ -257,6 +269,8 @@ class PcreUtils
      *
      * @param array<string,callable> $patternsAndCallbacks
      * @param array<string>          $subjects
+     *
+     * @return array<string>
      */
     public static function replaceCallbackArrayMultiple(
         array $patternsAndCallbacks,
@@ -294,6 +308,8 @@ class PcreUtils
             throw PcreException::fromLastError();
         }
 
+        assert(is_string($matched));
+
         return $matched;
     }
 
@@ -326,6 +342,8 @@ class PcreUtils
             throw PcreException::fromLastError();
         }
 
+        assert(is_string($matched));
+
         return $matched;
     }
 
@@ -338,6 +356,8 @@ class PcreUtils
      * @see https://www.php.net/manual/en/function.preg-filter.php
      *
      * @param array<string> $subjects
+     *
+     * @return array<string>
      */
     public static function filterMultiple(
         string $pattern,
@@ -352,6 +372,8 @@ class PcreUtils
             throw PcreException::fromLastError();
         }
 
+        assert(is_array($matched));
+
         return $matched;
     }
 
@@ -364,6 +386,9 @@ class PcreUtils
      * @see https://www.php.net/manual/en/function.preg-filter.php
      *
      * @param array<string,string> $patternsAndReplacements
+     * @param array<string>        $subjects
+     *
+     * @return array<string>
      */
     public static function filterArrayMultiple(
         array $patternsAndReplacements,
@@ -383,6 +408,8 @@ class PcreUtils
             throw PcreException::fromLastError();
         }
 
+        assert(is_array($matched));
+
         return $matched;
     }
 
@@ -390,6 +417,8 @@ class PcreUtils
      * Split string by a regular expression.
      *
      * @see https://www.php.net/manual/en/function.preg-split.php
+     *
+     * @return array<string>
      */
     public static function split(
         string $pattern,
@@ -424,12 +453,22 @@ class PcreUtils
      * Return array entries that match the pattern.
      *
      * @see https://www.php.net/manual/en/function.preg-grep.php
+     *
+     * @param array<string> $input
+     *
+     * @return array<string>
      */
     public static function grep(
         string $pattern,
         array $input,
         int $flags = 0
     ): array {
-        return preg_grep($pattern, $input, $flags);
+        $matched = preg_grep($pattern, $input, $flags);
+
+        if (false === $matched) {
+            throw PcreException::fromLastError();
+        }
+
+        return $matched;
     }
 }
