@@ -7,7 +7,7 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__.'/tests')
     ->name('*.php')
     ->append([__FILE__])
-    ;
+;
 
 return (new PhpCsFixer\Config())
     ->setRules([
