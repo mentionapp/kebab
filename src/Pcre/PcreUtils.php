@@ -14,7 +14,8 @@ class PcreUtils
      *
      * @see https://www.php.net/manual/en/function.preg-match.php
      *
-     * @param array<string> $matches
+     * @param array<string>                                           $matches
+     * @param int-mask-of<PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL> $flags
      */
     public static function match(
         string $pattern,
@@ -308,8 +309,6 @@ class PcreUtils
             throw PcreException::fromLastError();
         }
 
-        assert(is_string($matched));
-
         return $matched;
     }
 
@@ -342,8 +341,6 @@ class PcreUtils
             throw PcreException::fromLastError();
         }
 
-        assert(is_string($matched));
-
         return $matched;
     }
 
@@ -366,15 +363,7 @@ class PcreUtils
         int $limit = -1,
         ?int &$count = null
     ): array {
-        $matched = preg_filter($pattern, $replacement, $subjects, $limit, $count);
-
-        if (null === $matched) {
-            throw PcreException::fromLastError();
-        }
-
-        assert(is_array($matched));
-
-        return $matched;
+        return preg_filter($pattern, $replacement, $subjects, $limit, $count);
     }
 
     /**
@@ -396,21 +385,13 @@ class PcreUtils
         int $limit = -1,
         ?int &$count = null
     ): array {
-        $matched = preg_filter(
+        return preg_filter(
             array_keys($patternsAndReplacements),
             array_values($patternsAndReplacements),
             $subjects,
             $limit,
             $count
         );
-
-        if (null === $matched) {
-            throw PcreException::fromLastError();
-        }
-
-        assert(is_array($matched));
-
-        return $matched;
     }
 
     /**
