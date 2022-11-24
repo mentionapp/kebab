@@ -20,7 +20,7 @@ class Clock
      * @var ?float number of seconds since the Unix Epoch (January 1
      *             1970 00:00:00 GMT) or null if not mocked
      */
-    private static ?float $now;
+    private static ?float $now = null; // Not mocked by default
 
     /**
      * @param null|float $time number of seconds
