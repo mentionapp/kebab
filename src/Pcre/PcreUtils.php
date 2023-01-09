@@ -42,7 +42,7 @@ class PcreUtils
      *
      * @param array<array<string>> $matches
      *
-     * @param-out array<array<string>> $matches
+     * @param-out array<string|null|array{string,int}> $matches
      */
     public static function matchAll(
         string $pattern,
