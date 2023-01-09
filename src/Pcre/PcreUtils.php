@@ -16,6 +16,8 @@ class PcreUtils
      *
      * @param array<string>                                           $matches
      * @param int-mask-of<PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL> $flags
+     *
+     * @param-out array<string> $matches
      */
     public static function match(
         string $pattern,
@@ -39,6 +41,8 @@ class PcreUtils
      * @see https://www.php.net/manual/en/function.preg-match-all.php
      *
      * @param array<array<string>> $matches
+     *
+     * @param-out array<array<string>> $matches
      */
     public static function matchAll(
         string $pattern,
@@ -68,6 +72,8 @@ class PcreUtils
      * @see https://www.php.net/manual/en/function.preg-replace.php
      *
      * @param string|array<string> $pattern
+     *
+     * @param-out int $count
      */
     public static function replace(
         $pattern,
@@ -94,6 +100,8 @@ class PcreUtils
      * @see https://www.php.net/manual/en/function.preg-replace.php
      *
      * @param array<string,string> $patternsAndReplacements
+     *
+     * @param-out int $count
      */
     public static function replaceArray(
         array $patternsAndReplacements,
@@ -128,6 +136,8 @@ class PcreUtils
      * @param string|array<string> $pattern
      * @param array<string>        $subjects
      *
+     * @param-out int $count
+     *
      * @return array<string>
      */
     public static function replaceMultiple(
@@ -156,6 +166,8 @@ class PcreUtils
      *
      * @param array<string,string> $patternsAndReplacements
      * @param array<string>        $subjects
+     *
+     * @param-out int $count
      *
      * @return array<string>
      */
@@ -189,6 +201,8 @@ class PcreUtils
      * @see https://www.php.net/manual/en/function.preg-replace-callback.php
      *
      * @param string|array<string> $pattern
+     *
+     * @param-out int $count
      */
     public static function replaceCallback(
         $pattern,
@@ -217,6 +231,8 @@ class PcreUtils
      * @param string|array<string> $pattern
      * @param array<string>        $subjects
      *
+     * @param-out int $count
+     *
      * @return array<string>
      */
     public static function replaceCallbackMultiple(
@@ -242,6 +258,8 @@ class PcreUtils
      * Accepts only a single subject.
      *
      * @see https://www.php.net/manual/en/function.preg-replace-callback-array.php
+     *
+     * @param-out int $count
      *
      * @param array<string,callable> $patternsAndCallbacks
      */
@@ -271,6 +289,8 @@ class PcreUtils
      * @param array<string,callable> $patternsAndCallbacks
      * @param array<string>          $subjects
      *
+     * @param-out int $count
+     *
      * @return array<string>
      */
     public static function replaceCallbackArrayMultiple(
@@ -295,6 +315,8 @@ class PcreUtils
      * Accepts only one single subject.
      *
      * @see https://www.php.net/manual/en/function.preg-filter.php
+     *
+     * @param-out int $count
      */
     public static function filter(
         string $pattern,
@@ -322,6 +344,8 @@ class PcreUtils
      *
      * @param array<string,string> $patternsAndReplacements
      * @param string               $subject
+     *
+     * @param-out int $count
      */
     public static function filterArray(
         array $patternsAndReplacements,
@@ -354,6 +378,8 @@ class PcreUtils
      *
      * @param array<string> $subjects
      *
+     * @param-out int $count
+     *
      * @return array<string>
      */
     public static function filterMultiple(
@@ -376,6 +402,8 @@ class PcreUtils
      *
      * @param array<string,string> $patternsAndReplacements
      * @param array<string>        $subjects
+     *
+     * @param-out int $count
      *
      * @return array<string>
      */
