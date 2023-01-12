@@ -54,9 +54,9 @@ class PcreUtils
      *
      * @template TFlags of int-mask-of<PREG_PATTERN_ORDER|PREG_SET_ORDER|PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL>
      *
-     * @param mixed $matches
-     *
+     * @param mixed  $matches
      * @param TFlags $flags
+     *
      * @param-out (
      *          TFlags is 1
      *          ? array<list<string>>
