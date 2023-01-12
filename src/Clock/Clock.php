@@ -87,15 +87,7 @@ class Clock
     public static function sleep(int $s): int
     {
         if (null === self::$now) {
-            $i = sleep($s);
-
-            if (false === $i) {
-                // Since PHP 8.0 sleep does not return false anymore and throws instead.
-                // Emulating behavior here for consistency.
-                throw new \ValueError();
-            }
-
-            return $i;
+            return sleep($s);
         }
 
         self::travelTo(self::$now + $s);
