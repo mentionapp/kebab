@@ -14,15 +14,27 @@ class PcreUtils
      *
      * @see https://www.php.net/manual/en/function.preg-match.php
      *
-     * @param array<string>                                           $matches
-     * @param int-mask-of<PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL> $flags
+     * @template TFlags of int-mask-of<PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL>
      *
-     * @param-out array<string> $matches
+     * @param mixed  $matches
+     * @param TFlags $flags
+     *
+     * @param-out (
+     *             TFlags is 256
+     *             ? array<array-key, array{string, 0|positive-int}|array{'', -1}>
+     *             : (TFlags is 512
+     *                 ? array<array-key, string|null>
+     *                 : (TFlags is 768
+     *                     ? array<array-key, array{string, 0|positive-int}|array{null, -1}>
+     *                     : array<array-key, string>
+     *                     )
+     *                 )
+     *             ) $matches
      */
     public static function match(
         string $pattern,
         string $subject,
-        array &$matches = null,
+        mixed &$matches = null,
         int $flags = 0,
         int $offset = 0
     ): bool {
@@ -40,14 +52,39 @@ class PcreUtils
      *
      * @see https://www.php.net/manual/en/function.preg-match-all.php
      *
-     * @param array<array<string>> $matches
+     * @template TFlags of int-mask-of<PREG_PATTERN_ORDER|PREG_SET_ORDER|PREG_OFFSET_CAPTURE|PREG_UNMATCHED_AS_NULL>
      *
-     * @param-out array<string|null|array{string,int}> $matches
+     * @param mixed $matches
+     *
+     * @param TFlags $flags
+     * @param-out (
+     *          TFlags is 1
+     *          ? array<list<string>>
+     *          : (TFlags is 2
+     *              ? list<array<string>>
+     *              : (TFlags is 256|257
+     *                  ? array<list<array{string, int}>>
+     *                  : (TFlags is 258
+     *                      ? list<array<array{string, int}>>
+     *                      : (TFlags is 512|513
+     *                          ? array<list<?string>>
+     *                          : (TFlags is 514
+     *                              ? list<array<?string>>
+     *                              : (TFlags is 770
+     *                                  ? list<array<array{?string, int}>>
+     *                                  : array
+     *                              )
+     *                          )
+     *                      )
+     *                  )
+     *              )
+     *          )
+     *        ) $matches
      */
     public static function matchAll(
         string $pattern,
         string $subject,
-        array &$matches = null,
+        mixed &$matches = null,
         int $flags = 0,
         int $offset = 0
     ): int {
