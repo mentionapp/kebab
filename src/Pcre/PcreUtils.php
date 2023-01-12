@@ -57,8 +57,6 @@ class PcreUtils
             throw PcreException::fromLastError();
         }
 
-        assert(is_int($hits));
-
         return $hits;
     }
 
