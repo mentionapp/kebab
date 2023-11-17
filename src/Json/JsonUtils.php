@@ -4,6 +4,8 @@ namespace Mention\Kebab\Json;
 
 use Mention\Kebab\Json\Exception\JsonUtilsDecodeException;
 use Mention\Kebab\Json\Exception\JsonUtilsEncodeException;
+use Mention\Kebab\Pcre\Exception\PcreException;
+use Mention\Kebab\Pcre\PcreUtils;
 
 class JsonUtils
 {
@@ -86,6 +88,40 @@ class JsonUtils
     public static function roundTrip($value)
     {
         return self::decodeArray(self::encode($value));
+    }
+
+    /**
+     * Checks if given string is a valid Json string
+     * Discards the most obvious cases before performing validation.
+     *
+     * If you want to validate JSON before decoding it for further usage, decode it right away
+     * and handle JsonUtilsDecodeException instead, as it is way more efficient
+     */
+    public static function isValidJson(string $value): bool
+    {
+        if (is_numeric($value)) {
+            return true;
+        }
+        if (strlen($value) < 2) {
+            return false;
+        }
+        if (in_array($value, ['null', 'true', 'false'], true)) {
+            return true;
+        }
+        if (!in_array($value[0], ['{', '[', '"'], true)) {
+            return false;
+        }
+        if (!in_array([$value[0], substr($value, -1)], [['{', '}'], ['[', ']'], ['"', '"']], true)) {
+            return false;
+        }
+
+        try {
+            self::decodeArray($value);
+        } catch (JsonUtilsDecodeException $e) {
+            return false;
+        }
+
+        return true;
     }
 
     /** @return mixed */

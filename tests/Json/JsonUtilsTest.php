@@ -59,4 +59,16 @@ class JsonUtilsTest extends TestCase
         $json = '"hello';
         JsonUtils::decodeArray($json);
     }
+
+    public function testIsValidJson(): void
+    {
+        $json = '{"hello":"world"}';
+        self::assertTrue(JsonUtils::isValidJson($json));
+    }
+
+    public function testIsValidJsonFailure(): void
+    {
+        $json = '';
+        self::assertFalse(JsonUtils::isValidJson($json));
+    }
 }
