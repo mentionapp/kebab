@@ -12,12 +12,12 @@ final class DurationTest extends TestCase
         $duration = Duration::days(3);
 
         self::assertSame(3, $duration->toDaysInt());
-        self::assertSame(3*24, $duration->toHoursInt());
-        self::assertSame(3*24*60, $duration->toMinutesInt());
-        self::assertSame(3*24*60*60, $duration->toSecondsInt());
-        self::assertSame(3*24*60*60*1_000, $duration->toMilliSecondsInt());
-        self::assertSame(3*24*60*60*1_000*1_000, $duration->toMicroSecondsInt());
-        self::assertSame(3*24*60*60*1_000*1_000*1_000, $duration->toNanoSecondsInt());
+        self::assertSame(3 * 24, $duration->toHoursInt());
+        self::assertSame(3 * 24 * 60, $duration->toMinutesInt());
+        self::assertSame(3 * 24 * 60 * 60, $duration->toSecondsInt());
+        self::assertSame(3 * 24 * 60 * 60 * 1_000, $duration->toMilliSecondsInt());
+        self::assertSame(3 * 24 * 60 * 60 * 1_000 * 1_000, $duration->toMicroSecondsInt());
+        self::assertSame(3 * 24 * 60 * 60 * 1_000 * 1_000 * 1_000, $duration->toNanoSecondsInt());
     }
 
     public function testDurationConstructors(): void
@@ -26,43 +26,43 @@ final class DurationTest extends TestCase
         self::assertEqualsWithDelta(1e-9, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::nanoSeconds(3);
-        self::assertEqualsWithDelta(3*1e-9, $duration->toSeconds(), 1e-20);
+        self::assertEqualsWithDelta(3 * 1e-9, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::microSecond();
         self::assertEqualsWithDelta(1e-6, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::microSeconds(3);
-        self::assertEqualsWithDelta(3*1e-6, $duration->toSeconds(), 1e-20);
+        self::assertEqualsWithDelta(3 * 1e-6, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::milliSecond();
         self::assertEqualsWithDelta(1e-3, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::milliSeconds(3);
-        self::assertEqualsWithDelta(3*1e-3, $duration->toSeconds(), 1e-20);
+        self::assertEqualsWithDelta(3 * 1e-3, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::second();
         self::assertEqualsWithDelta(1, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::seconds(3);
-        self::assertEqualsWithDelta(3*1, $duration->toSeconds(), 1e-20);
+        self::assertEqualsWithDelta(3 * 1, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::minute();
         self::assertEqualsWithDelta(60, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::minutes(3);
-        self::assertEqualsWithDelta(3*60, $duration->toSeconds(), 1e-20);
+        self::assertEqualsWithDelta(3 * 60, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::hour();
-        self::assertEqualsWithDelta(60*60, $duration->toSeconds(), 1e-20);
+        self::assertEqualsWithDelta(60 * 60, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::hours(3);
-        self::assertEqualsWithDelta(3*60*60, $duration->toSeconds(), 1e-20);
+        self::assertEqualsWithDelta(3 * 60 * 60, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::day();
-        self::assertEqualsWithDelta(24*60*60, $duration->toSeconds(), 1e-20);
+        self::assertEqualsWithDelta(24 * 60 * 60, $duration->toSeconds(), 1e-20);
 
         $duration = Duration::days(3);
-        self::assertEqualsWithDelta(3*24*60*60, $duration->toSeconds(), 1e-20);
+        self::assertEqualsWithDelta(3 * 24 * 60 * 60, $duration->toSeconds(), 1e-20);
     }
 
     public function testDurationArithmetic(): void

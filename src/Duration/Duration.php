@@ -129,23 +129,6 @@ final class Duration
         return new self(intval($newValue));
     }
 
-    private function mulOverflows(int|float $a, int|float $b): bool
-    {
-        if ($a > 0) {
-            if ($b > 0) {
-                return $a > PHP_INT_MAX / $b;
-            }
-
-            return $b < PHP_INT_MIN / $a;
-        }
-
-        if ($b > 0) {
-            return $a < PHP_INT_MIN / $b;
-        }
-
-        return $a !== 0 && $b < PHP_INT_MAX / $a;
-    }
-
     /** @param positive-int|negative-int|float $value */
     public function div(int|float $value): self
     {
@@ -265,5 +248,22 @@ final class Duration
     public function min(self $other): self
     {
         return $this->value <= $other->value ? $this : $other;
+    }
+
+    private function mulOverflows(int|float $a, int|float $b): bool
+    {
+        if ($a > 0) {
+            if ($b > 0) {
+                return $a > PHP_INT_MAX / $b;
+            }
+
+            return $b < PHP_INT_MIN / $a;
+        }
+
+        if ($b > 0) {
+            return $a < PHP_INT_MIN / $b;
+        }
+
+        return $a !== 0 && $b < PHP_INT_MAX / $a;
     }
 }
