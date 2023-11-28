@@ -1,7 +1,9 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+namespace Mention\Kebab\Tests\Jitter;
+
 use Mention\Kebab\Jitter\Jitter;
+use PHPUnit\Framework\TestCase;
 
 class JitterTest extends TestCase
 {

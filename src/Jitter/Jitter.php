@@ -7,7 +7,7 @@ class Jitter
     private const UINT32_MAX = 0xFFFFFFFF;
 
     /**
-     * Randomizes $value by adding or removing up to $value*factor
+     * Randomizes $value by adding or removing up to $value*factor.
      *
      * Adding Jitter helps to avoid thundering herds problems, by reducing
      * the chances that many events will occur at exactly the same time.
@@ -29,7 +29,7 @@ class Jitter
     }
 
     /**
-     * Same as random(), but use a stable jitter
+     * Same as random(), but use a stable jitter.
      *
      * Jitter is computed as a function of $key. This avoids averaging jitter
      * over time.
@@ -49,7 +49,7 @@ class Jitter
     }
 
     /**
-     * Returns a value in the range [$min,$max]
+     * Returns a value in the range [$min,$max].
      *
      * The value is computed as a function of $key. This avoids averaging jitter
      * over time.
