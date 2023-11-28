@@ -88,6 +88,22 @@ class JsonUtils
         return self::decodeArray(self::encode($value));
     }
 
+    /**
+     * Checks if given string is a valid JSON document.
+     *
+     * If you want to validate JSON before decoding it for further usage, decode
+     * it right away and handle JsonUtilsDecodeException instead, as it is way
+     * more efficient.
+     */
+    public static function isValidJson(string $json): bool
+    {
+        if (function_exists('json_validate')) {
+            return json_validate($json);
+        }
+
+        return json_decode($json, true) !== null || JSON_ERROR_NONE === json_last_error();
+    }
+
     /** @return mixed */
     private static function decodeInternal(string $json, bool $assoc)
     {
