@@ -110,10 +110,12 @@ class DateUtilsTest extends TestCase
         self::assertEquals('2019-01-01 00:00:00', $tz->format('Y-m-d H:i:s'));
         self::assertEquals('1546268400', $tz->getTimestamp());
 
+        // @timestamp behaves like setTimestamp() and overrides the timezone
+
         $tz = DateUtils::fromStringTz('@1546268400', new \DateTimeZone('Asia/Tokyo'));
-        self::assertEquals('Asia/Tokyo', $tz->getTimezone()->getName());
+        self::assertEquals('+00:00', $tz->getTimezone()->getName());
         self::assertEquals('2018-12-31 15:00:00', $tz->format('Y-m-d H:i:s'));
-        self::assertEquals('1546236000', $tz->getTimestamp());
+        self::assertEquals('1546268400', $tz->getTimestamp());
     }
 
     public function testToMutable(): void
