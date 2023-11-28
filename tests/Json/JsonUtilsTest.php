@@ -66,6 +66,13 @@ class JsonUtilsTest extends TestCase
         self::assertTrue(JsonUtils::isValidJson($json));
     }
 
+    public function testIsValidJsonNull(): void
+    {
+        $json = json_encode(null);
+        self::assertIsString($json);
+        self::assertTrue(JsonUtils::isValidJson($json));
+    }
+
     public function testIsValidJsonFailure(): void
     {
         $json = '';
